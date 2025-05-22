@@ -4,8 +4,8 @@ channels:
   - conda-forge
 dependencies:
   - python>=3.10
+  - pip
   - pcaspy
-  - p4p
   - pyepics
   - numpy
   - bokeh
@@ -13,6 +13,8 @@ dependencies:
   - pyyaml
   - lume-model>=1.4
   - nose>=1.1.2
+  - pip:
+    - p4p
 
   # dev requirements
   - pre-commit
