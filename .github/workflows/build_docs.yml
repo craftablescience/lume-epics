@@ -13,12 +13,15 @@ jobs:
     name:  Build Docs
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - uses: conda-incubator/setup-miniconda@v3
         with:
           auto-activate-base: false
           activate-environment: lume-epics-dev
           environment-file: dev-environment.yml
-          channels: conda-forge,defaults
+          channels: conda-forge,anaconda
           python-version: "3.10"
       - name: Build Docs
         shell: bash -l {0}
