@@ -26,10 +26,11 @@ jobs:
       - name: Setup conda
         uses: conda-incubator/setup-miniconda@v3
         with:
+          miniforge-version: latest
           auto-activate-base: false
           activate-environment: lume-epics
           environment-file: environment.yml
-          channels: conda-forge,anaconda
+          channels: conda-forge
           channel-priority: strict
           python-version: ${{ matrix.python-version }}
       - name: Install build

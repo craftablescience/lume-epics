@@ -17,10 +17,11 @@ jobs:
           fetch-depth: 0
       - uses: conda-incubator/setup-miniconda@v3
         with:
+          miniforge-version: latest
           auto-activate-base: false
           activate-environment: lume-epics-dev
           environment-file: dev-environment.yml
-          channels: conda-forge,anaconda
+          channels: conda-forge
           python-version: "3.10"
       - name: Build Docs
         shell: bash -l {0}
