@@ -1,0 +1,15 @@
+# conda env create -f environment.yml
+name: lume-epics
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - pcaspy
+  - pyepics
+  - p4p
+  - numpy
+  - bokeh
+  - click
+  - pyyaml
+  - lume-model>=1.4
+  - nose>=1.1.2
