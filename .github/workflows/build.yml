@@ -15,13 +15,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         python-version: ["3.10"]
 
     name: Python ${{ matrix.python-version }} (${{ matrix.os }})
     steps:
       - uses: actions/checkout@v4
-      - uses: conda-incubator/setup-miniconda@v3
+      - name: Setup conda
+        uses: conda-incubator/setup-miniconda@v3
         with:
           auto-activate-base: false
           activate-environment: lume-epics
@@ -29,8 +30,9 @@ jobs:
           channels: conda-forge,defaults
           channel-priority: strict
           python-version: ${{ matrix.python-version }}
-      - name: Build package
-        shell: bash -l {0}
+      - name: Install build
         run: |
-          conda install conda-build
-          conda build -q conda-recipe --python=${{ matrix.python-version }} --output-folder bld-dir
+          python -m pip install build --user
+      - name: Build a source tarball
+        run: |
+          python -m build
